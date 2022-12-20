@@ -1,0 +1,21 @@
+{
+    "resources": {
+        "cpu": "128",
+        "disk": 10,
+        "memory": "64",
+        "network": [{
+            "interface-name": "eth0",
+            "network-name": "VPG0",
+            "ipv4": {
+                "default": true,
+                "dns": "",
+                "gateway": "192.168.0.1",
+                "ip": "192.168.0.13",
+                "mode": "static",
+                "prefix": "24"
+            }
+        }],
+        "profile": "custom"
+    }
+}
+

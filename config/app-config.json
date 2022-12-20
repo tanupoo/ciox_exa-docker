@@ -1,0 +1,66 @@
+{
+    "Constants": {
+        "HOMEDIR": "ENV:IOX_EXA_HOME"
+    },
+    "Points": {
+        "PX000002": {
+            "SiteName": "TEST第3工場",
+            "Location": "TEST-B",
+            "DeviceName": "TEST-X",
+            "ValueName": "テスト30秒積算値",
+            "Unit": "kWh",
+            "IntegrationSpan": 30,
+            "ULimitRotationNumber": 100
+        }
+    },
+    "Targets": [
+        {
+            "TargetID": "DUMMY-00123",
+            "Points": [
+                { "PointID": "PX000002", "DeviceCode": "D", "Position": 2 }
+            ],
+            "Protocol": "SLMP",
+            "PullInterval": 5,
+            "RetryInterval": 1,
+            "RetryCount": 2,
+            "IPAddr": "1.1.1.195",
+            "IPPort": 1025,
+            "Transport":  "UDP",
+            "PDUType": "ST",
+            "Encode": "binary",
+            "NetNo": "0x00",
+            "NodeNo": "0xff",
+            "DstProcNo": "0x3fff",
+            "Timer": 4,
+            "Command": "0401",
+            "SubCommand": "0000",
+            "DevCode": "D",
+            "ReadStart": 1,
+            "ReadCount": 2
+        }
+    ],
+    "Servers": [
+        {
+            "ServerID": "LOCAL-A",
+            "EPR": "http://1.1.1.195:8000/post",
+            "Version": "0",
+            "IntegrationMarginTime": 3,
+            "IntegrationDeferTime": 5,
+            "PostInterval": 60,
+            "Timeout": 15,
+            "Points": [
+                "PX000002"
+            ]
+        }
+    ],
+    "AgentDB": {
+        "IPAddr": "192.168.0.104",
+        "IPPort": 6379
+    },
+    "QueDB": {
+        "IPAddr": "192.168.0.105",
+        "IPPort": 6379
+    },
+    "SyslogAddr": "1.1.1.195",
+    "SyslogPort": 8514
+}
