@@ -29,9 +29,13 @@ if [ ! -f build/slmpclient.tgz ] ; then
 fi
 
 # ciox_exa.tar
-if [ ! -f build/ciox_exa-${VER}.tar.gz ] ; then
-    curl -L -o build/ciox_exa-${VER}.tgz \
+tarball="build/ciox_exa-${VER}.tgz"
+if [ ! -f $tarball ] ; then
+    curl -f -L -o $tarball \
         https://github.com/tanupoo/ciox_exa/archive/refs/tags/${VER}.tar.gz
+    if [ $? -ne 0 ] ; then
+        exit $?
+    fi
 fi
 
 target="ciox_exa:${VER}"
