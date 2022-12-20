@@ -17,7 +17,7 @@ target="redis:7.0.2-bullseye"
 tarball="build/redis.tar"
 if [ ! -f $tarball ] ; then
     image=$(docker images -q $target)
-    if [ ! -z "$image" ] ; then
+    if [ -z "$image" ] ; then
         docker pull $target
     fi
     docker save $target -o $tarball
